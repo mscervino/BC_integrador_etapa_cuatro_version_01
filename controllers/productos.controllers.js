@@ -3,7 +3,7 @@ import modelos from '../models/productos.models.js'
 const getAll = async (req, res) => {
     try {
         const productos = await modelos.obtenerTodos()
-        res.json ({ productos })
+        res.json(handleMongoId(productos))
     } catch (error) {
         console.log('[getAll]', error)
     }
@@ -13,7 +13,7 @@ const getOne = async(req, res) => {
     const id = req.params.id
     try {
         const producto = await modelos.obtenerUnProducto(id)
-        res.json(producto)
+        res.json(handleMongoId(producto))
     } catch (error) {
         console.log('[getOne]', error)
     }
@@ -34,10 +34,11 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     const id = req.params.id
-    const productoEditado = req.body
+    const productoPorEditado = req.body
     try {
-        const productoActualizado = await modelos.updateProducto(id, productoEditado)
-        res.send('Ok -> PUT (UPDATE)')
+        const productoActualizado = await modelos.updateProducto(id, productoPorEditado)
+        res.json(productoActualizado)
+        
     } catch (error) {
         console.log('[update]', error)
     }

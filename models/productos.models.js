@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import ProductosEsquema from "./ProductosEsquema.js"
+import ProductosEsquema from "./esquemas/ProductosEsquema.js"
 
 const ProductosModelo = mongoose.model('productos', ProductosEsquema)
 
@@ -30,12 +30,24 @@ const crearProducto = async (producto) => {
         const productoCreado = await ProductosModelo.create(producto)
         return productoCreado
     } catch (error) {
-        console.log('[crearProducto]', error)
+        //console.log('[crearProducto]', error)
+        throw error
     }
 }
 
-const updateProducto = () => {
+const updateProducto = async (id, productoPorEditado) => {
     
+    try {
+        const options = { new: true }
+        const productoYaEditado = await ProductosModelo.findByIdAndUpdate(id, productoPorEditado, options)
+        return productoYaEditado
+        
+    } catch (error) {
+        throw error
+    }
+
+
+
 }
 
 const deleteProducto = async (id) => {
