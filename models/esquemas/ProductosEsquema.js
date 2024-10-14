@@ -11,6 +11,7 @@ const ProductosEsquema = mongoose.Schema(
         marca: String,
         categoria: String,
         detalles: String,
+        foto: String,
         envio: Boolean
     },
     {

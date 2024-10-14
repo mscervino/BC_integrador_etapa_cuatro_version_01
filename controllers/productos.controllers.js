@@ -29,7 +29,7 @@ const create = async (req, res) => {
 
     try {
         const productoCreado = await modelos.crearProducto(producto)
-        res.status(201).json(productoCreado)
+        res.status(201).json(handleMongoId(productoCreado))
     } catch (error) {
         console.log('[create]', error)
     }
@@ -42,7 +42,7 @@ const update = async (req, res) => {
 
     try {
         const produtoActualizado = await modelos.updateProducto(id, productoPorEditado)
-        res.json(produtoActualizado)
+        res.json(handleMongoId(productoActualizado))
 
     } catch (error) {
         console.log('[update]', error)
@@ -55,7 +55,7 @@ const remove = async (req, res) => {
     try {
         const productoBorrado = await modelos.deleteProducto(id)
         console.log(productoBorrado)
-        res.json({producto: productoBorrado})
+        res.json(handleMongoId(productoBorrado))
     } catch (error) {
         console.log('[error]', error)
     }

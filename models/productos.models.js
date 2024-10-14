@@ -16,7 +16,7 @@ const obtenerTodos = async() => {
 
 const obtenerUnProducto = async (id) => {
     try {
-        const prducto = await ProductosModelo.findById(id)
+        const producto = await ProductosModelo.findById(id)
         console.log(producto)
         return producto
     } catch (error) {

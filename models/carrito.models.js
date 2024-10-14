@@ -8,7 +8,7 @@ const crearCarrito = async (carrito) => {
 
     try {
 
-        const carritoCreado = new CarritosEsquema ({ carrito })
+        const carritoCreado = new CarritosModelo ({ carrito })
         const carritoGuardado = await carritoCreado.save()
 
         return carritoGuardado

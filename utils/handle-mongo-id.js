@@ -1,7 +1,6 @@
 import handleObjMongoToObjJs from "./handle-obj-mongo-to-obj-js.js"
 
-// Transformar los objetos de JS que vienen con el _id en un id
-const handleMongoId = (elemento) => { // elemento => Puede ser un array o un boj
+const handleMongoId = (elemento) => { 
     const pk = '_id'
 
     elemento = handleObjMongoToObjJs(elemento) 
